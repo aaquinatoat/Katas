@@ -1,47 +1,32 @@
-﻿import { game } from "./fizzBuzzWhizz";
+import { game } from "./fizzBuzzWhizz";
 
 describe("FizzBuzzWhizz Game", () => {
-  test("devuelve 1", () => {
-    expect(game(1)).toEqual(1);
-  });
+  const expectedResults: Array<number | string> = [
+    // 1 - 10
+    1, "Whizz", "FizzWhizz", 4, "BuzzWhizz",
+    "Fizz", "Whizz", 8, "Fizz", "Buzz",
 
-  test("devuelve numeros sin ninguna regla", () => {
-    expect(game(4)).toEqual(4);
-    expect(game(8)).toEqual(8);
-    expect(game(49)).toEqual(49);
-  });
+    // 11 - 20
+    "Whizz", "Fizz", "Whizz", 14, "FizzBuzz",
+    16, "Whizz", "Fizz", "Whizz", "Buzz",
 
-  test("devuelve Fizz", () => {
-    expect(game(6)).toEqual("Fizz");
-    expect(game(9)).toEqual("Fizz");
-    expect(game(12)).toEqual("Fizz");
-  });
+    // 21 - 30
+    "Fizz", 22, "Whizz", "Fizz", "Buzz",
+    26, "Fizz", 28, "Whizz", "FizzBuzz",
 
-  test("devuelve Buzz", () => {
-    expect(game(10)).toEqual("Buzz");
-    expect(game(20)).toEqual("Buzz");
-    expect(game(25)).toEqual("Buzz");
-    expect(game(100)).toEqual("Buzz");
-  });
+    // 31 - 40
+    "Whizz", 32, "Fizz", 34, "Buzz",
+    "Fizz", "Whizz", 38, "Fizz", "Buzz",
 
-  test("devuelve FizzBuzz", () => {
-    expect(game(15)).toEqual("FizzBuzz");
-    expect(game(30)).toEqual("FizzBuzz");
-    expect(game(75)).toEqual("FizzBuzz");
-  });
+    // 41 - 42
+    "Whizz", "Fizz",
+  ];
 
-  test("devuelve Whizz para primos distintos de 3 y 5", () => {
-    expect(game(2)).toEqual("Whizz");
-    expect(game(7)).toEqual("Whizz");
-    expect(game(11)).toEqual("Whizz");
-    expect(game(97)).toEqual("Whizz");
-  });
+  expectedResults.forEach((expected, index) => {
+    const input = index + 1;
 
-  test("devuelve FizzWhizz para 3", () => {
-    expect(game(3)).toEqual("FizzWhizz");
-  });
-
-  test("devuelve BuzzWhizz para 5", () => {
-    expect(game(5)).toEqual("BuzzWhizz");
+    test(`returns ${expected} for ${input}`, () => {
+      expect(game(input)).toEqual(expected);
+    });
   });
 });
