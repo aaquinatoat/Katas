@@ -65,6 +65,12 @@ Run the tests:
 npm run test
 ```
 
+To display each test separately:
+
+```bash
+npm run test -- --verbose
+```
+
 To run the tests automatically whenever I save changes:
 
 ```bash
@@ -78,6 +84,12 @@ npm.cmd install
 npm.cmd run test
 ```
 
+To show all 42 tests in PowerShell:
+
+```powershell
+npm.cmd run test -- --verbose --no-cache
+```
+
 ## How I organized the solution
 
 I used an `isPrime` helper to keep the prime number check separate from the game rules. It returns false for numbers below 2 and checks possible divisors up to the square root of the number. The bonus only requires inputs up to 100.
@@ -86,7 +98,16 @@ Inside `game`, I build the result by adding each matching word in order: `Fizz`,
 
 ## Testing and TDD
 
-The tests compare the actual result of `game` with the expected result. They cover unchanged numbers, multiples of 3 and 5, their combination, and prime numbers.
+I included 42 individual tests, one for each number from 1 to 42. I stored the expected results in an array and used `forEach` to create a separate Jest test for each input. Each test compares the actual result of `game` with its expected value.
+
+These cases cover unchanged numbers, multiples of 3 and 5, their combination, and prime numbers. The function is not limited to 42; that is the number of test cases I selected. The bonus asks me to consider primes up to 100, so this test set does not check every number in that range.
+
+When all 42 tests pass, Jest displays:
+
+```text
+Test Suites: 1 passed, 1 total
+Tests:       42 passed, 42 total
+```
 
 For this exercise, the TDD cycle means writing a test, checking that it fails, adding enough code to make it pass, and then improving the code while keeping the tests passing. This helped me understand why checking only 1 and 2 is not enough to verify all the rules.
 
@@ -101,3 +122,4 @@ I based this exercise on the [JavaScript Code Katas project by JuanPa90Cap](http
 ## Author
 
 Anthony Quinatoa
+
