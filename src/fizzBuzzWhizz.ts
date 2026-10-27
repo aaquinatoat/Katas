@@ -1,4 +1,4 @@
-﻿const isPrime = (number: number): boolean => {
+const isPrime = (number: number): boolean => {
   if (number < 2) {
     return false;
   }
